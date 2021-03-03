@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=divice-width, initial-scale=1">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <div class="header">
+      <h1>Weather App</h1>
+      <div class="select_city">
+        <select v-model="selectedCity">
+          <option disabled value="">Select</option><img src="img/icon.png" alt="icon">
+          <!-- ???アイコンが表示されない -->
+          <option v-for="city in cities">{{ city }}</option>
+        </select>
+        <button v-on:click="getWeather()" class="get_button">Get</button>
+        <!-- methodsのときは（）をつける -->
+      </div>
+      <!-- getWeatherが呼ばれたら天気を表示する -->
+      <div v-bind:class="[condition.main, 'weather_result']" v-if="show">
+      <div class="weather_info">
+        <p class="weather_city">
+          {{ selectedCity }}
+        </p>
+        <p class="weather_temp">
+          {{ temp }}°
+          <!-- &#8451; -->
+        </p>
+        <p class="weather_condition">
+          {{ condition.main }}
+        </p>
+        <!-- データを参照するときは"”は要らない -->
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        cities: ["Tokyo", "Osaka", "Oita", "Okinawa"],
+        temp: null,
+        condition: {
+          main: null
+        },
+        selectedCity: "",
+        show: false
+      },
+      methods: {
+        getWeather: function (event) {
+          var getUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+          var getParam = ",jp&units=metric&appid=b10746358fef8f5d35507f4fd9a84816";
+          getUrl = getUrl + this.selectedCity + getParam;
+          axios.get(getUrl)
+            .then(function (response) {
+              this.selectedCity = response.data.name
+              this.temp = Math.floor(response.data.main.temp)
+              this.condition = response.data.weather[0]
+              console.log(response);
+            }.bind(this))
+            .catch(function (error) {
+              console.log(error)
+            })
+          console.log(event);
+          if (this.city == "") {
+            return;
+          };
+          this.show = !this.show
+        }
+      }
+    })
+  </script>
+
+
+
+</body>
+
+</html>
