@@ -64,10 +64,11 @@ img {
 .select_city img {
     width: 0.5rem;
 }
-.weather_result{
-	width:100vw;
-	height:100vh;
-	background-size:cover;
+
+.weather_result {
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,61 +89,69 @@ img {
     font-size: 64px;
     color: white;
 }
-.weather_result{
+
+.weather_result {
     width: 100%;
 }
 
-.Rain{
+.Rain {
     background-image: url("https://patch.com/img/cdn20/users/22992871/20190313/094116/styles/raw/public/processed_images/donatphotography_rain_umbrella_shutterstock_728383990_copy-1552484394-5009.jpg");
 }
 
-.Clouds{
+.Clouds {
     background-image: url("http://dai-iad.net/wp-content/uploads/2016/04/14422522073z3u1.jpg");
 }
 
-.Clear{
+.Clear {
     background-image: url("https://www.zastavki.com/pictures/originals/2015/Nature___Rivers_and_lakes_Clear_water_lake_in_California_106287_.jpg");
 }
 
-.Sunset{
+.Sunset {
     background-image: url("https://d2studios.net/wp-content/uploads/blog/2016/03/sunset.jpg");
 }
 
 @media screen and (max-width: 959px) {
-    /* 959px以下に適用されるCSS（タブレット用） */
-    #app{
+
+    #app {
         width: 100%;
         position: relative;
     }
+
     .header h1 {
         font-size: 42px;
     }
+
     .select_city {
         font-size: 16px;
     }
-    .select_city select{
+
+    .select_city select {
         font-size: 16px;
     }
 
 }
 
 @media screen and (max-width: 480px) {
-    /* 480px以下に適用されるCSS（スマホ用） */
-    #app{
+
+    #app {
         width: 100%;
         position: relative;
     }
-    #app{
+
+    #app {
         width: 100%;
         position: relative;
     }
+
     .header h1 {
         font-size: 36px;
     }
+
     .select_city {
         font-size: 12px;
     }
-    .select_city select{
+
+    .select_city select {
         font-size: 12px;
     }
 }

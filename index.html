@@ -16,28 +16,23 @@
       <div class="select_city">
         <select v-model="selectedCity">
           <option disabled value="">Select</option><img src="img/icon.png" alt="icon">
-          <!-- ???アイコンが表示されない -->
           <option v-for="city in cities">{{ city }}</option>
         </select>
         <button v-on:click="getWeather()" class="get_button">Get</button>
-        <!-- methodsのときは（）をつける -->
       </div>
-      <!-- getWeatherが呼ばれたら天気を表示する -->
       <div v-bind:class="[condition.main, 'weather_result']" v-if="show">
-      <div class="weather_info">
-        <p class="weather_city">
-          {{ selectedCity }}
-        </p>
-        <p class="weather_temp">
-          {{ temp }}°
-          <!-- &#8451; -->
-        </p>
-        <p class="weather_condition">
-          {{ condition.main }}
-        </p>
-        <!-- データを参照するときは"”は要らない -->
+        <div class="weather_info">
+          <p class="weather_city">
+            {{ selectedCity }}
+          </p>
+          <p class="weather_temp">
+            {{ temp }}°
+          </p>
+          <p class="weather_condition">
+            {{ condition.main }}
+          </p>
+        </div>
       </div>
-    </div>
     </div>
   </div>
   </div>
@@ -79,9 +74,6 @@
       }
     })
   </script>
-
-
-
 </body>
 
 </html>
